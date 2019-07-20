@@ -5,10 +5,13 @@ Some Quick Code notes for cpp (will work for c++ 11 and beyond)
 1. [Useful Imports](#useful-imports)
 2. [Iterating](#iterating)
 3. [STL containers](#containers)
-    1. [Vector](#vector)
+    1. [vector and deque](#vector)
     2. [set, multiset](#set)
     3. [map, multimap](#map)
     4. [unordered_set, unordered_map](#unordered)
+    5. [priority_queue](#priority_queue)
+    6. [stack and queue](#stackqueue)
+    7. [list](#list)
 ### <a name="useful-imports"/>
 ### Useful Imports 
 ```cpp
@@ -46,11 +49,14 @@ for(auto it=ds.begin();it!=ds.end();it++)
 //reverse iteration
 for(auto it=ds.rbegin();it!=ds.rend();it++)
     cout << *it
+    
+//moving iterator
+advance(it,3); //move iterator forward by 3, useful function in list traversal
 ```
 ### <a name="containers"/>
 ## CONTAINERS 
 ### <a name="vector"/>
-### vector 
+### vector and deque
 ```cpp
 vector<int> a(10); // 10 elements with garbage value
 vector<int> a(10,2); // 10 elements each with value 2
@@ -68,6 +74,12 @@ a.insert(a.begin()+3,5); //insert before 3rd position
 a.erase(a.begin()+2); // remove at 2nd index ( 3rd element )
 a.erase(a.begin(),a.begin()+2); // remove all, from param1 to param2(exclusive)
 
+//deque operations (all those in vector plus these) 
+deque<int> d;
+d.push_front(10);
+d.pop_front();
+// deqeue is double ended queue, faster insert and delete than vector
+// but contingous memory is not guaranteed.so traversal is slightly slower
 ```
 ### <a name="set"/>
 ### set and multiset
@@ -130,4 +142,69 @@ set.insert(key);
 
 map.insert(make_pair(key,val));
 map[key] = val;
+```
+### <a name="priority_queue"/>
+### priority_queue
+```cpp
+priority_queue<int> a; //max heap
+priority_queue<int, vector<int>, greater<int> > q; // min heap, vector/deque can be used
+q.push(1);
+q.top(); // max or min depending on constructor
+q.pop();
+
+q.size(); //unsigned
+
+while(!q.empty())
+{
+    cout << q.top() << " ";
+    q.pop();
+}
+```
+### <a name="stackqueue"/>
+### stack and queue
+```cpp
+stack<int> s; // 2nd argument in <> can be vector, dequeue, list
+s.push(10);
+s.top();
+s.pop();
+s.size();
+s.empty();
+
+queue<int,list<int> > d; // default is deque for 2nd param
+q.push(10);
+q.front(); // instead of top
+q.back(); //last insertion
+q.pop(); //deletes front
+```
+### <a name="list"/>
+### list
+```cpp
+list<int> l = {1, 2, 3, 4, 5, 6};
+l.push_back(7);
+l.push_front(0);
+l.front();
+l.back();
+l.pop_back();
+l.pop_front();
+l.size();
+l.empty();
+l.clear();
+
+auto it = l.begin();
+it++;
+l.insert(it, 10); //insert 10 at iterator position
+l.insert(it, 10, 5); //insert 5, 10 times at iterator position
+l.remove(10); //remove by key
+l.erase(it); //remove by iterator position
+l.erase(it_start,it_end); //erase inclusinve start till exclusive end
+
+//algorithms
+l.reverse();
+l.sort(greater<int>()); // default is ascending, u can use custom comparator function as well
+l.unique();
+
+list<int> new_l = {1, 2, 3, 4, 5, 6};
+
+l.splice(l.begin(), new_l, new_it1, new_it2); transfer from new_l to l
+l.merge(new_l); // both list must be ordered(ascending), input list will by cleared
 ```
