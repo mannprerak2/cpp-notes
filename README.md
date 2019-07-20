@@ -5,8 +5,10 @@ Some Quick Code notes for cpp (will work for c++ 11 and beyond)
 1. [Useful Imports](#useful-imports)
 2. [Iterating](#iterating)
 3. [STL containers](#containers)
-  1.[Vector](#vector)
-### Useful Imports <a name="useful-imports"/>
+    1. [Vector](#vector)
+
+### <a name="useful-imports"/>
+### Useful Imports 
 ```cpp
 //basic
 #include <iostream> // for cin, cout
@@ -28,8 +30,8 @@ Some Quick Code notes for cpp (will work for c++ 11 and beyond)
 
 using namespace std; // helpful 
 ```
-
-### iterating (general) <a name="iterating"/>
+### <a name="iterating"/>
+### iterating (general) 
 ```
 // here 'ds' can be any container - array, vector, set, map, etc...
 for(auto c: ds){ // ds can even be array here
@@ -42,9 +44,10 @@ for(auto it=ds.begin();it!=ds.end();it++)
 //reverse iteration
 for(auto it=ds.rbegin();it!=ds.rend();it++)
 ```
-
-## CONTAINERS <a name="containers"/>
-### vector <a name="vector"/>
+### <a name="containers"/>
+## CONTAINERS 
+### <a name="vector"/>
+### vector 
 ```
 vector<int> a;
 a.push_back(1);
