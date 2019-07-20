@@ -36,7 +36,7 @@ Some Quick Code notes for cpp (will work for c++ 11 and beyond)
 using namespace std; // helpful 
 ```
 ### <a name="iterating"/>
-### iterating (general) 
+### Iterating 
 ```cpp
 // here 'ds' can be any container - array, vector, set, map, etc...
 for(auto c: ds){ // ds can even be array here
@@ -52,6 +52,10 @@ for(auto it=ds.rbegin();it!=ds.rend();it++)
     
 //moving iterator
 advance(it,3); //move iterator forward by 3, useful function in list traversal
+
+//get iterator
+auto it = prev(ds.end(),3); //3rd from end
+auto it = next(ds.begin(),2); //2nd from begin
 ```
 ### <a name="containers"/>
 ## CONTAINERS 
