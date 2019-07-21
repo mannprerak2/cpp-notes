@@ -12,6 +12,7 @@ Some Quick Code notes for cpp (will work for c++ 11 and beyond)
     5. [priority_queue](#priority_queue)
     6. [stack and queue](#stackqueue)
     7. [list](#list)
+4. [Important STL algo's](#stl-algos)
 ### <a name="useful-imports"/>
 ### Useful Imports 
 ```cpp
@@ -212,3 +213,38 @@ list<int> new_l = {1, 2, 3, 4, 5, 6};
 l.splice(l.begin(), new_l, new_it1, new_it2); transfer from new_l to l
 l.merge(new_l); // both list must be ordered(ascending), input list will by cleared
 ```
+### <a name="stl-algos"/>
+### Important STL Algorithms
+```cpp
+vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+//simple  useful algo's
+random_shuffle(v.begin(), v.end()); // can also provide a random number generator
+sort(v.begin(), v.end()); //uses quicksort internally
+
+// sorting with lambda comparator (works in c++11 and beyond)
+sort(v.begin(),v.end(),[](int a, int b){
+    	return a>b; // sorts in reverse
+});
+bool b = binary_search(v.begin(), v.end(), 6);
+reverse(v.begin(), v.end()); // iterator must be bidirectional (wont work for forward_list)
+auto it_max = max_element(v.begin(),v.end());
+auto it_min = min_element(v.begin(),v.end());
+
+auto it_lower = lower_bound(v.begin(),v.end(),3); // first element <=3
+auto it_upper= upper_bound(v.begin(),v.end(),3); //first element >3 
+
+int count_occ = count(v.begin(),v.end(),4);
+auto found = find(v.begin(),v.end(),8);
+
+//advance
+v.erase(unique(v.begin(),v.end()),v.end()); // remove adjacent duplicates only (only works for sorted array)
+
+//permutations
+next_permutation(v.begin(), v.end()); // goes to next perm for sorted 
+
+prev_permutation(v.begin(),v.end()); //goes to previous perm for sorted vector
+
+int a = distance(v.begin(),v.end()); // get distance between iterators
+```
+
