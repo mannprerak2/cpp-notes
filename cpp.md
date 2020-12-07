@@ -344,3 +344,15 @@ class Dog : public Animal {
   }
 };
 ```
+
+The access specifier can be used to calling functions from super class
+```C++
+
+int main(){
+    Dog dg;
+    dg.animalSound(); // Calls dogs function.
+    dg.Animal::animalSound(); // Calls Animal's function.
+
+    return 0;
+}
+```
