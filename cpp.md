@@ -12,6 +12,9 @@
     7. [list](#list)
 4. [Important STL algo's](#stl-algos)
 5. [OOP - Object oriented programming](#oop)
+
+> [W3School C++ Tutorial](https://www.w3schools.com/cpp/)
+
 ### <a name="useful-imports"/>
 ### Useful Imports
 ```cpp
