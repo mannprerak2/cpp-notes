@@ -12,6 +12,7 @@
     7. [list](#list)
 4. [Important STL algo's](#stl-algos)
 5. [OOP - Object oriented programming](#oop)
+6. [Language Tricks](#lang)
 
 > [W3School C++ Tutorial](https://www.w3schools.com/cpp/)
 
@@ -357,5 +358,42 @@ int main(){
     dg.Animal::animalSound(); // Calls Animal's function.
 
     return 0;
+}
+```
+
+
+### <a name="lang">
+### Language Tricks
+
+Operator overloading
+```C++
+class Complex {
+private:
+    int real, imag;
+public:
+    Complex(int r = 0, int i =0)  {real = r;   imag = i;}
+
+    // This is automatically called when '+' is used with
+    // between two Complex objects
+    Complex operator + (Complex const &obj) {
+         Complex res;
+         res.real = real + obj.real;
+         res.imag = imag + obj.imag;
+         return res;
+    }
+    void print() { cout << real << " + i" << imag << endl; }
+
+    // Another way to do operator overloading
+    //
+    // Declaring friend function using friend keyword
+    friend Complex operator+(Complex&, Complex&);
+};
+
+// Implementing friend function with two parameters
+Complex operator+(Complex& d1, Complex& d2) // Call by reference
+{
+    // Do addition and return new object.
+    ...
+    ...
 }
 ```
